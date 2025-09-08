@@ -1,7 +1,3 @@
-# Welcome to Cloud Functions for Firebase for Python!
-# To get started, simply uncomment the below code or create your own.
-# Deploy with `firebase deploy`
-
 from firebase_functions import https_fn, options
 from firebase_admin import initialize_app, firestore
 import json
@@ -12,8 +8,6 @@ if os.name=="nt":
     credential_path = "C:/Users/ymats/AppData/Roaming/gcloud/application_default_credentials.json"
     os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credential_path
 
-# Initialization
-# The app object in `firebase_admin` is a singleton, so it's safe to initialize it here.
 initialize_app()
 db = firestore.client()
 
