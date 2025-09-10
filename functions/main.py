@@ -17,9 +17,18 @@ def getBooks(req: https_fn.Request) -> https_fn.Response:
         search = req.args.get("search", "")
         start = int(req.args.get("start", 0))
         size = int(req.args.get("size", 100))
+        sort = req.args.get("sort", "recommended")
 
         books_ref = db.collection('books')
-        query = books_ref.where("title", ">=", search).where("title", "<=", search + "\uf8ff")
+        query = books_ref
+
+        if search:
+            query = query.where("title", ">=", search).where("title", "<=", search + "\uf8ff")
+        
+        if sort == "popularity":
+            query = query.order_by("views", direction=firestore.Query.DESCENDING)
+        elif sort == "year":
+            query = query.order_by("published", direction=firestore.Query.DESCENDING)
         
         docs = query.offset(start).limit(size).stream()
 
@@ -29,7 +38,8 @@ def getBooks(req: https_fn.Request) -> https_fn.Response:
             books[doc.id] = {
                 "title": book_data.get("title"),
                 "thumbnail": book_data.get("thumbnail"),
-                "url": book_data.get("url")
+                "url": book_data.get("url"),
+                "author": book_data.get("author")
             }
 
         return https_fn.Response(json.dumps(books), status=200, mimetype="application/json")

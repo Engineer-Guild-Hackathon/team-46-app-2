@@ -13,7 +13,7 @@
 |search|      | 検索キーワード||
 |start |      | 返す結果の初めのインデックス|0|
 |size  |      | 返す結果の数 |100|
-
+|sort  |      | recommended, popularity, year |recommended|
 ### レスポンス形式
 ```
 {
@@ -56,6 +56,9 @@ firebase のtextsコレクション内で bookId,page,levelが一致するドキ
     - title: str
     - thumbnail: str
     - url: str
+    - author: str
+    - views: int
+    - published: int (出版年)
 - texts
     - bookId: str
     - page: int
