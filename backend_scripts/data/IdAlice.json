@@ -1,0 +1,66 @@
+[
+    {
+        "type":"subtitle",
+        "ORIGINAL":"(ORIGINAL)Chpter 1 : Down the Rabbit-Hole",
+        "A1":"(A1)Chpter 1 : Down the Rabbit-Hol",
+        "A2":"(A2)Chpter 1 : Down the Rabbit-Hol",
+        "B1":"(B1)Chpter 1 : Down the Rabbit-Hol",
+        "B2":"(B2)Chpter 1 : Down the Rabbit-Hol",
+        "jp":"第1章:ウサギ穴の中へ"
+    },
+    {
+         "type":"text",
+         "ORIGINAL":"(ORIGINAL)This is the 1st sentence of the Alice book.",
+         "A1":"(A1)This is the 1st sentence of the Alice book.",
+         "A2":"(A2)This is the 1st sentence of the Alice book.",
+         "B1":"(B1)This is the 1st sentence of the Alice book.",
+         "B2":"(B2)This is the 1st sentence of the Alice book.",
+         "jp":"これはアリス本の1文目です。",
+         "is_paragraph_start": true,
+         "is_paragraph_end": false
+     },
+     {
+        "type":"text",
+        "ORIGINAL":"(ORIGINAL)This is the 2nd sentence of the Alice book.",
+        "A1":"(A1)This is the 2nd sentence of the Alice book.",
+        "A2":"(A2)This is the 2nd sentence of the Alice book.",
+        "B1":"(B1)This is the 2nd sentence of the Alice book.",
+        "B2":"(B2)This is the 2nd sentence of the Alice book.",
+        "jp":"これはアリス本の2文目です。",
+        "is_paragraph_start": false,
+        "is_paragraph_end": false
+    },
+    {
+        "type":"text",
+        "ORIGINAL":"(ORIGINAL)This is the 3rd sentence of the Alice book.",
+        "A1":"(A1)This is the 3rd sentence of the Alice book.",
+        "A2":"(A2)This is the 3rd sentence of the Alice book.",
+        "B1":"(B1)This is the 3rd sentence of the Alice book.",
+        "B2":"(B2)This is the 3rd sentence of the Alice book.",
+        "jp":"これはアリス本の3文目です。",
+        "is_paragraph_start": false,
+        "is_paragraph_end": true
+    },
+    {
+        "type":"text",
+        "ORIGINAL":"(ORIGINAL)This is the 4th sentence of the Alice book.",
+        "A1":"(A1)This is the 4th sentence of the Alice book.",
+        "A2":"(A2)This is the 4th sentence of the Alice book.",
+        "B1":"(B1)This is the 4th sentence of the Alice book.",
+        "B2":"(B2)This is the 4th sentence of the Alice book.",
+        "jp":"これはアリス本の4文目です。",
+        "is_paragraph_start": true,
+        "is_paragraph_end": false
+    },
+    {
+        "type":"text",
+        "ORIGINAL":"(ORIGINAL)This is the 5th sentence of the Alice book.",
+        "A1":"(A1)This is the 5th sentence of the Alice book.",
+        "A2":"(A2)This is the 5th sentence of the Alice book.",
+        "B1":"(B1)This is the 5th sentence of the Alice book.",
+        "B2":"(B2)This is the 5th sentence of the Alice book.",
+        "jp":"これはアリス本の5文目です。",
+        "is_paragraph_start": false,
+        "is_paragraph_end": true
+    }
+ ]

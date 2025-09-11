@@ -1,0 +1,150 @@
+from firebase_functions import https_fn, options
+from firebase_admin import initialize_app, firestore
+import json
+import os
+import libs
+import random
+
+# どうしてもローカルで認証が通らなかったので脳筋おまじない
+if os.name=="nt":
+    credential_path = "C:/Users/ymats/AppData/Roaming/gcloud/application_default_credentials.json"
+    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credential_path
+
+initialize_app()
+db = firestore.client()
+
+@https_fn.on_request()
+def books(req: https_fn.Request) -> https_fn.Response:
+    try:
+        search = req.args.get("search", "")
+        start = int(req.args.get("start", 0))
+        size = int(req.args.get("size", 100))
+        sort = req.args.get("sort", "recommended")
+
+        books_ref = db.collection('books')
+        query = books_ref
+
+        if search:
+            query = query.where("title", ">=", search).where("title", "<=", search + "\uf8ff")
+        
+        if sort == "popularity":
+            query = query.order_by("views", direction=firestore.Query.DESCENDING)
+        elif sort == "year":
+            query = query.order_by("published", direction=firestore.Query.DESCENDING)
+        
+        docs = query.offset(start).limit(size).stream()
+
+        books = {}
+        for doc in docs:
+            book_data = doc.to_dict()
+            books[doc.id] = {
+                "title": book_data.get("title"),
+                "thumbnail": book_data.get("thumbnail"),
+                "url": book_data.get("url"),
+                "author": book_data.get("author")
+            }
+
+        return https_fn.Response(json.dumps(books), status=200, mimetype="application/json")
+
+    except Exception as e:
+        print(f"Error fetching items from Firestore: {e}")
+        return https_fn.Response("Internal Server Error", status=500)
+
+@https_fn.on_request()
+def text(req: https_fn.Request) -> https_fn.Response:
+    """Gets the text of a specific page of a book."""
+    try:
+        book_id = req.args.get("bookId")
+        start_sentence_no = int(req.args.get("startSentenceNo",0))
+        user_id=req.args.get("userId","anonymous")
+        requested_char_count=int(req.args.get("charCount",800))
+        word_click_count = req.args.get("wordClickCount")
+        sentence_click_count = req.args.get("sentenceClickCount")
+        # time=req.args.get("time")
+        user_rate = int(req.args.get("rate",1800))
+
+        if book_id==None:
+            return https_fn.Response("Missing required parameters", status=400)
+
+        # ユーザレートの更新ロジック
+        if word_click_count==None and sentence_click_count==None:
+            # レベル変動なし
+            pass
+        else:
+            if word_click_count==None:
+                cnt=int(sentence_click_count)
+            elif sentence_click_count==None:
+                cnt=int(word_click_count)
+            else:
+                cnt=int(word_click_count)+int(sentence_click_count)
+            if cnt == 0:
+                user_rate += 200
+            elif cnt ==1:
+                user_rate += 100
+            elif cnt ==2:
+                user_rate += 50
+            elif cnt <=4:
+                user_rate += 0
+            else:
+                user_rate -= 100
+        
+        level_to_rate = { # https://www.eiken.or.jp/cse/ を参考
+            "A1":1500,
+            "A2":1800,
+            "B1":2100,
+            "B2":2400,
+            "ORIGINAL":2700,
+        }
+
+        choices,weights=libs.getWeight(user_rate, level_to_rate)
+
+        output = {
+            "rate": user_rate,
+            "text":[],
+        }
+
+
+
+        texts_ref = db.collection('text')
+        query = texts_ref.where("bookId", "==", book_id) \
+            .where("sentenceNo", ">=", start_sentence_no) \
+            .where("sentenceNo", "<=", start_sentence_no+20) \
+            .order_by("sentenceNo", direction=firestore.Query.ASCENDING) \
+            .offset(start_sentence_no)
+
+        docs = query.stream()
+
+        sentence_no=0
+        totalCharaCount=0
+        for doc in docs:
+            data = doc.to_dict()
+
+            level=random.choices(choices, weights=weights, k=1)[0]
+
+            en_text=data.get(level)
+            jp_text=data.get("jp")
+            sentence_no=data.get("sentenceNo")
+
+            if en_text==None:
+                return https_fn.Response("Internal Server Error: no level {level} sentence on DB", status=500)
+            if jp_text==None:
+                return https_fn.Response("Internal Server Error: no jp sentence on DB", status=500)
+            totalCharaCount+=len(en_text)
+
+            if totalCharaCount>requested_char_count:
+                break
+
+            output["text"].append({
+                "type":data.get("type","text"),
+                "sentenceNo":sentence_no,
+                "en":en_text,
+                "jp":jp_text,
+            })
+            
+        output["endSentenceNo"]=sentence_no
+
+        return https_fn.Response(json.dumps(output), status=200, mimetype="application/json")
+
+    except Exception as e:
+        print(f"Error fetching text from Firestore: {e}")
+        return https_fn.Response("Internal Server Error", status=500)

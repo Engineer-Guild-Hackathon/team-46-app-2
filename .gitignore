@@ -1,3 +1,4 @@
 .env
 venv/
+functions/venv/
 __pycache__/

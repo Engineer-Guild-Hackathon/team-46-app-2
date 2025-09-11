@@ -1,0 +1,21 @@
+# FireStoreデータ構造（参考）
+- books(id=bookId)
+    - title: str
+    - thumbnail: str
+    - url: str
+    - author: str
+    - views: int
+    - published: int (出版年)
+- text
+    - bookId: str
+    - sentenceNo: int
+    - sentence: int
+    - type: text
+    - ORIGINAL: str
+    - A1: str
+    - A2: str
+    - B1: str
+    - B2: str
+    - jp: str
+    - is_paragraph_start: bool
+    - is_paragraph_end: bool
