@@ -1,66 +1,110 @@
 [
     {
-        "type":"subtitle",
-        "ORIGINAL":"(ORIGINAL)Chpter 1 : Down the Rabbit-Hole",
-        "A1":"(A1)Chpter 1 : Down the Rabbit-Hol",
-        "A2":"(A2)Chpter 1 : Down the Rabbit-Hol",
-        "B1":"(B1)Chpter 1 : Down the Rabbit-Hol",
-        "B2":"(B2)Chpter 1 : Down the Rabbit-Hol",
-        "jp":"第1章:ウサギ穴の中へ"
+        "type": "subtitle",
+        "ORIGINAL": "CHAPTER I. Down the Rabbit-Hole",
+        "jp": "第1章 ウサギの穴をくぐって",
+        "A1": "CHAPTER I. Down the Rabbit-Hole",
+        "A2": "CHAPTER I. Down the Rabbit-Hole",
+        "B1": "CHAPTER I. Down the Rabbit-Hole",
+        "B2": "CHAPTER I. Down the Rabbit-Hole"
     },
     {
-         "type":"text",
-         "ORIGINAL":"(ORIGINAL)This is the 1st sentence of the Alice book.",
-         "A1":"(A1)This is the 1st sentence of the Alice book.",
-         "A2":"(A2)This is the 1st sentence of the Alice book.",
-         "B1":"(B1)This is the 1st sentence of the Alice book.",
-         "B2":"(B2)This is the 1st sentence of the Alice book.",
-         "jp":"これはアリス本の1文目です。",
-         "is_paragraph_start": true,
-         "is_paragraph_end": false
-     },
-     {
-        "type":"text",
-        "ORIGINAL":"(ORIGINAL)This is the 2nd sentence of the Alice book.",
-        "A1":"(A1)This is the 2nd sentence of the Alice book.",
-        "A2":"(A2)This is the 2nd sentence of the Alice book.",
-        "B1":"(B1)This is the 2nd sentence of the Alice book.",
-        "B2":"(B2)This is the 2nd sentence of the Alice book.",
-        "jp":"これはアリス本の2文目です。",
-        "is_paragraph_start": false,
-        "is_paragraph_end": false
-    },
-    {
-        "type":"text",
-        "ORIGINAL":"(ORIGINAL)This is the 3rd sentence of the Alice book.",
-        "A1":"(A1)This is the 3rd sentence of the Alice book.",
-        "A2":"(A2)This is the 3rd sentence of the Alice book.",
-        "B1":"(B1)This is the 3rd sentence of the Alice book.",
-        "B2":"(B2)This is the 3rd sentence of the Alice book.",
-        "jp":"これはアリス本の3文目です。",
-        "is_paragraph_start": false,
-        "is_paragraph_end": true
-    },
-    {
-        "type":"text",
-        "ORIGINAL":"(ORIGINAL)This is the 4th sentence of the Alice book.",
-        "A1":"(A1)This is the 4th sentence of the Alice book.",
-        "A2":"(A2)This is the 4th sentence of the Alice book.",
-        "B1":"(B1)This is the 4th sentence of the Alice book.",
-        "B2":"(B2)This is the 4th sentence of the Alice book.",
-        "jp":"これはアリス本の4文目です。",
+        "type": "text",
+        "ORIGINAL": "Alice was beginning to get very tired of sitting by her sister on the bank, and of having nothing to do: once or twice she had peeped into the book her sister was reading, but it had no pictures or conversations in it, “and what is the use of a book,” thought Alice “without pictures or conversations?”",
         "is_paragraph_start": true,
-        "is_paragraph_end": false
+        "is_paragraph_end": true,
+        "A1": "Alice was very tired of sitting next to her sister. She had nothing to do. She looked at her sister's book, but it had no pictures or words to talk about. Alice thought, 'What good is a book without pictures or talking?'",
+        "A2": "Alice was getting really tired of sitting by her sister with nothing to do. She peeked into her sister's book a few times, but it didn't have any pictures or stories. Alice thought, 'What is the point of a book without pictures or stories?'",
+        "B1": "Alice was growing very tired of sitting next to her sister on the riverbank with nothing to occupy her. She glanced into her sister's book a couple of times, but it lacked both pictures and dialogue. Alice wondered, 'What is the use of a book without pictures or dialogue?'",
+        "B2": "Alice was becoming increasingly weary of sitting beside her sister on the riverbank, with nothing to engage her interest. She had glanced into her sister's book once or twice, only to find that it contained neither illustrations nor conversations. Alice pondered, 'What is the point of a book without illustrations or conversations?'",
+        "jp": "アリスは、川岸で姉の隣に座っていることにとても疲れてきました。何もすることがありませんでした。彼女は姉が読んでいる本を何度か覗きましたが、絵も会話もありませんでした。アリスは考えました、「絵や会話のない本なんて、何の役に立つの？」"
     },
     {
-        "type":"text",
-        "ORIGINAL":"(ORIGINAL)This is the 5th sentence of the Alice book.",
-        "A1":"(A1)This is the 5th sentence of the Alice book.",
-        "A2":"(A2)This is the 5th sentence of the Alice book.",
-        "B1":"(B1)This is the 5th sentence of the Alice book.",
-        "B2":"(B2)This is the 5th sentence of the Alice book.",
-        "jp":"これはアリス本の5文目です。",
+        "type": "text",
+        "ORIGINAL": "So she was considering in her own mind (as well as she could, for the hot day made her feel very sleepy and stupid), whether the pleasure of making a daisy-chain would be worth the trouble of getting up and picking the daisies, when suddenly a White Rabbit with pink eyes ran close by her.",
+        "is_paragraph_start": true,
+        "is_paragraph_end": true,
+        "A1": "Alice was thinking if making a daisy chain was worth getting up. She felt sleepy because it was hot. Then, a White Rabbit with pink eyes ran by her.",
+        "A2": "Alice wondered if it was worth getting up to make a daisy chain because she felt sleepy from the heat. Suddenly, a White Rabbit with pink eyes ran past her.",
+        "B1": "Alice was considering if it was worth the effort to get up and make a daisy chain, as the hot day made her feel sleepy. Just then, a White Rabbit with pink eyes ran by her.",
+        "B2": "Alice was pondering whether it was worth the effort to get up and pick daisies for a chain, as the heat made her sleepy and sluggish. Suddenly, a White Rabbit with pink eyes dashed past her.",
+        "jp": "アリスは、暑い日でとても眠くてぼんやりしていたので、デイジーチェーンを作るために立ち上がってデイジーを摘む価値があるかどうかを考えていました。そのとき、突然ピンクの目をした白ウサギが彼女のそばを走り抜けました。"
+    },
+    {
+        "type": "text",
+        "ORIGINAL": "There was nothing so _very_ remarkable in that; nor did Alice think it so _very_ much out of the way to hear the Rabbit say to itself, “Oh dear!",
+        "is_paragraph_start": true,
+        "is_paragraph_end": false,
+        "A1": "There was nothing very strange about that. Alice didn't think it was very odd to hear the Rabbit say, “Oh dear!”",
+        "A2": "It wasn't really strange. Alice didn't think it was very unusual to hear the Rabbit say, “Oh dear!”",
+        "B1": "There was nothing particularly unusual about it, and Alice didn't find it very odd to hear the Rabbit say, “Oh dear!”",
+        "B2": "There was nothing exceedingly remarkable about that; nor did Alice find it particularly strange to hear the Rabbit exclaim, “Oh dear!”",
+        "jp": "それにはそれほど驚くべきことはありませんでしたし、アリスもウサギが「おやまあ！」と言うのを聞いても、それほど不思議とは思いませんでした。"
+    },
+    {
+        "type": "text",
+        "ORIGINAL": "Oh dear!",
         "is_paragraph_start": false,
-        "is_paragraph_end": true
+        "is_paragraph_end": false,
+        "A1": "Oh no!",
+        "A2": "Oh my!",
+        "B1": "Oh dear me!",
+        "B2": "Oh goodness!",
+        "jp": "おやまあ！"
+    },
+    {
+        "type": "text",
+        "ORIGINAL": "I shall be late!” (when she thought it over afterwards, it occurred to her that she ought to have wondered at this, but at the time it all seemed quite natural); but when the Rabbit actually _took a watch out of its waistcoat-pocket_, and looked at it, and then hurried on, Alice started to her feet, for it flashed across her mind that she had never before seen a rabbit with either a waistcoat-pocket, or a watch to take out of it, and burning with curiosity, she ran across the field after it, and fortunately was just in time to see it pop down a large rabbit-hole under the hedge.",
+        "is_paragraph_start": false,
+        "is_paragraph_end": true,
+        "A1": "I will be late! Alice saw the Rabbit take out a watch and run. She was curious and ran after it.",
+        "A2": "I am going to be late! Alice saw the Rabbit take a watch from its pocket and run. She was very curious and followed it.",
+        "B1": "I might be late! Alice noticed the Rabbit taking a watch from its pocket and hurrying away. Curious, she chased after it.",
+        "B2": "I shall be late! Alice observed the Rabbit pulling a watch from its waistcoat-pocket and rushing off. Intrigued, she pursued it.",
+        "jp": "「遅れてしまうわ！」アリスはウサギがチョッキのポケットから時計を取り出して急いでいるのを見て、興味をそそられ、ウサギを追いかけました。"
+    },
+    {
+        "type": "text",
+        "ORIGINAL": "In another moment down went Alice after it, never once considering how in the world she was to get out again.",
+        "is_paragraph_start": true,
+        "is_paragraph_end": true,
+        "A1": "Then Alice followed the rabbit down the hole, not thinking about how to get back out.",
+        "A2": "Alice quickly went down the hole after the rabbit, not even thinking about how to come back out.",
+        "B1": "Without a second thought, Alice went down the hole after the rabbit, not considering how she would get back out.",
+        "B2": "In a moment of impulse, Alice chased the rabbit down the hole, without a single thought of how she might return to the surface.",
+        "jp": "次の瞬間、アリスはその後を追って穴に飛び込みましたが、どうやって出るかを考えることは一度もありませんでした。"
+    },
+    {
+        "type": "text",
+        "ORIGINAL": "The rabbit-hole went straight on like a tunnel for some way, and then dipped suddenly down, so suddenly that Alice had not a moment to think about stopping herself before she found herself falling down a very deep well.",
+        "is_paragraph_start": true,
+        "is_paragraph_end": true,
+        "A1": "The rabbit-hole was like a tunnel and went straight for a while. Then it went down quickly, so quickly that Alice couldn't stop and started falling down a deep well.",
+        "A2": "The rabbit-hole was like a tunnel and went straight for a bit. Then it suddenly went down, so fast that Alice didn't have time to stop and she found herself falling into a deep well.",
+        "B1": "The rabbit-hole continued straight like a tunnel for a while, then it abruptly went down, so quickly that Alice didn't have time to stop herself before she found herself falling into a very deep well.",
+        "B2": "The rabbit-hole extended straight like a tunnel for a distance before it suddenly plunged downwards, so unexpectedly that Alice didn't have a chance to stop herself before she realized she was falling into a very deep well.",
+        "jp": "ウサギの穴はしばらくトンネルのように真っ直ぐ続き、そして突然急に下へと傾いた。それはあまりにも突然で、アリスは止まる間もなく、とても深い井戸に落ちていることに気づいた。"
+    },
+    {
+        "type": "text",
+        "ORIGINAL": "Either the well was very deep, or she fell very slowly, for she had plenty of time as she went down to look about her and to wonder what was going to happen next.",
+        "is_paragraph_start": true,
+        "is_paragraph_end": false,
+        "A1": "The well was very deep, or she fell slowly. She had lots of time to look around and think about what would happen next.",
+        "A2": "The well was really deep, or she was falling very slowly. She had a lot of time to look around and wonder what would happen next.",
+        "B1": "The well might have been very deep, or perhaps she was falling slowly, as she had plenty of time to look around and think about what might happen next.",
+        "B2": "Either the well was extremely deep, or she was descending very slowly, because she had ample time to observe her surroundings and ponder what would happen next.",
+        "jp": "井戸がとても深かったか、彼女がゆっくりと落ちていたかのどちらかで、彼女は周りを見渡し、次に何が起こるかを考える時間がたっぷりありました。"
+    },
+    {
+        "type": "text",
+        "ORIGINAL": "First, she tried to look down and make out what she was coming to, but it was too dark to see anything; then she looked at the sides of the well, and noticed that they were filled with cupboards and book-shelves; here and there she saw maps and pictures hung upon pegs.",
+        "is_paragraph_start": false,
+        "is_paragraph_end": false,
+        "A1": "First, she looked down to see where she was going, but it was too dark. Then, she looked at the sides of the well and saw cupboards and bookshelves. She also saw maps and pictures hanging on pegs.",
+        "A2": "At first, she tried to look down to see where she was going, but it was too dark to see. Then, she looked at the sides of the well and noticed cupboards and bookshelves. Sometimes, she saw maps and pictures hanging on pegs.",
+        "B1": "Initially, she attempted to look down to figure out what she was approaching, but it was too dark to discern anything. Then, she observed the sides of the well and noticed they were lined with cupboards and bookshelves, with maps and pictures hanging on pegs here and there.",
+        "B2": "She first attempted to peer down to determine what she was heading towards, but the darkness made it impossible to see anything. Subsequently, she examined the sides of the well and observed that they were lined with cupboards and bookshelves, with occasional maps and pictures suspended on pegs.",
+        "jp": "最初に、彼女は下を見て何に向かっているのかを確認しようとしましたが、暗すぎて何も見えませんでした。それから、井戸の側面を見て、そこが戸棚や本棚でいっぱいであることに気づきました。ここそこに、地図や絵が釘に掛けられているのが見えました。"
     }
- ]
+]
