@@ -39,7 +39,7 @@ firebase のbooksコレクション内でtitleにsearchパラメータを含む�
 | 名前 | 必須 | 説明 |デフォルト値|
 |------|------|------|------------|
 |bookId| 必須 | bookId||
-|sentenceNo  | 必須 | 開始のsentenceNo||
+|startSentenceNo| 必須 | 開始のsentenceNo||
 |userId|必須|ユーザーID||
 |wordClickCount||クリックして単語を表示させた回数|null|
 |sentenceClickCount||クリックして日本語訳を表示させた回数|null|
@@ -60,6 +60,9 @@ firebase のbooksコレクション内でtitleにsearchパラメータを含む�
     ]
 }
 ```
+
+- startSentenceNoから1ページ分の文のリストを返送
+- type は text もしくは subtitle
 
 ### 技術仕様
 firebase のtextsコレクション内で bookId,page,levelが一致するドキュメントのtextを返す。なければ空のjsonを返す
