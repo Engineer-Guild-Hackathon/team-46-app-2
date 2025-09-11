@@ -39,8 +39,8 @@ firebase のbooksコレクション内でtitleにsearchパラメータを含む�
 | 名前 | 必須 | 説明 |デフォルト値|
 |------|------|------|------------|
 |bookId| 必須 | bookId||
-|startSentenceNo| 必須 | 開始のsentenceNo||
-|userId|必須|ユーザーID||
+|startSentenceNo|    | 開始のsentenceNo|0|
+|userId|  |ユーザーID|"anonymous"|
 |charCount||要求文字数（最大）|800|
 |wordClickCount||クリックして単語を表示させた回数|null|
 |sentenceClickCount||クリックして日本語訳を表示させた回数|null|
