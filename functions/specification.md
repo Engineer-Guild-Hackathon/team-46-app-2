@@ -40,27 +40,25 @@ firebase のbooksコレクション内でtitleにsearchパラメータを含む�
 |------|------|------|------------|
 |bookId| 必須 | bookId||
 |page  | 必須 | ページ番号||
-|level |      | CEFRレベル（A1-B2,ORIGINAL） |ORIGINAL|
+|wordClickCount|必須|クリックして単語を表示させた回数||
+|sentenceClickCount|必須|クリックして日本語訳を表示させた回数||
+|time|必須|前回のロードから今回のリクエストまでの秒数||
+|rate||ユーザーの推定レート|0|
 
 ### レスポンス形式
 ```
 {
-    "text":本文
+    "rate":1800,
+    "text":[
+        {
+            "type":"text",
+            "en":"Alice said,\"I feel strange.I am getting very small\" ",
+            "jp":"アリスは「体が小さくなっていくよう！」と言いました"
+        },.....
+    ]
 }
 ```
+
 ### 技術仕様
 firebase のtextsコレクション内で bookId,page,levelが一致するドキュメントのtextを返す。なければ空のjsonを返す
 
-# FireStoreデータ構造（参考）
-- books(id=bookId)
-    - title: str
-    - thumbnail: str
-    - url: str
-    - author: str
-    - views: int
-    - published: int (出版年)
-- texts
-    - bookId: str
-    - page: int
-    - level: str
-    - text: str
