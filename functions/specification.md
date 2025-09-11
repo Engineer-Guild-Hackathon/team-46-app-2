@@ -55,6 +55,7 @@ firebase のbooksコレクション内でtitleにsearchパラメータを含む�
     "text":[
         {
             "type":"text",
+            "sentenceNo":data.get("sentenceNo"),
             "en":"Alice said,\"I feel strange.I am getting very small\" ",
             "jp":"アリスは「体が小さくなっていくよう！」と言いました"
         },.....
