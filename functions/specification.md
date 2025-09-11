@@ -39,28 +39,34 @@ firebase のbooksコレクション内でtitleにsearchパラメータを含む�
 | 名前 | 必須 | 説明 |デフォルト値|
 |------|------|------|------------|
 |bookId| 必須 | bookId||
-|page  | 必須 | ページ番号||
-|level |      | CEFRレベル（A1-B2,ORIGINAL） |ORIGINAL|
+|startSentenceNo|    | 開始のsentenceNo|0|
+|userId|  |ユーザーID|"anonymous"|
+|charCount||要求文字数（最大）|800|
+|wordClickCount||クリックして単語を表示させた回数|null|
+|sentenceClickCount||クリックして日本語訳を表示させた回数|null|
+|time||前回のロードから今回のリクエストまでの秒数|null|
+|rate||ユーザーの推定レート|null|
 
 ### レスポンス形式
 ```
 {
-    "text":本文
+    "rate":1800,
+    "endSentenceNo":121,
+    "text":[
+        {
+            "type":"text",
+            "sentenceNo":data.get("sentenceNo"),
+            "en":"Alice said,\"I feel strange.I am getting very small\" ",
+            "jp":"アリスは「体が小さくなっていくよう！」と言いました"
+        },.....
+    ]
 }
 ```
+
+- startSentenceNoから1ページ分の文のリストを返送
+- リスト長さはの合計文字数が要求文字数に達しない最大値
+- type は text もしくは subtitle
+
 ### 技術仕様
 firebase のtextsコレクション内で bookId,page,levelが一致するドキュメントのtextを返す。なければ空のjsonを返す
 
-# FireStoreデータ構造（参考）
-- books(id=bookId)
-    - title: str
-    - thumbnail: str
-    - url: str
-    - author: str
-    - views: int
-    - published: int (出版年)
-- texts
-    - bookId: str
-    - page: int
-    - level: str
-    - text: str
