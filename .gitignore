@@ -1,4 +1,4 @@
 .env
 venv/
-functions/venv/
 __pycache__/
+functions/venv/
