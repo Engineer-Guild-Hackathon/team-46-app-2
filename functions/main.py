@@ -1,4 +1,5 @@
 from firebase_functions import https_fn, options
+from firebase_functions.options import CorsOptions
 from firebase_admin import initialize_app, firestore
 import json
 import os
@@ -13,7 +14,7 @@ if os.name=="nt":
 initialize_app()
 db = firestore.client()
 
-@https_fn.on_request()
+@https_fn.on_request(cors=options.CorsOptions(cors_origins="*", cors_methods=["GET", "POST", "OPTIONS"]))
 def books(req: https_fn.Request) -> https_fn.Response:
     try:
         search = req.args.get("search", "")
@@ -50,7 +51,7 @@ def books(req: https_fn.Request) -> https_fn.Response:
         print(f"Error fetching items from Firestore: {e}")
         return https_fn.Response("Internal Server Error", status=500)
 
-@https_fn.on_request()
+@https_fn.on_request(cors=options.CorsOptions(cors_origins="*", cors_methods=["GET", "POST", "OPTIONS"]))
 def text(req: https_fn.Request) -> https_fn.Response:
     """Gets the text of a specific page of a book."""
     try:
