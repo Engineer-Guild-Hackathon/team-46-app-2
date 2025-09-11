@@ -41,6 +41,7 @@ firebase のbooksコレクション内でtitleにsearchパラメータを含む�
 |bookId| 必須 | bookId||
 |startSentenceNo| 必須 | 開始のsentenceNo||
 |userId|必須|ユーザーID||
+|charCount||要求文字数（最大）|800|
 |wordClickCount||クリックして単語を表示させた回数|null|
 |sentenceClickCount||クリックして日本語訳を表示させた回数|null|
 |time||前回のロードから今回のリクエストまでの秒数|null|
@@ -62,6 +63,7 @@ firebase のbooksコレクション内でtitleにsearchパラメータを含む�
 ```
 
 - startSentenceNoから1ページ分の文のリストを返送
+- リスト長さはの合計文字数が要求文字数に達しない最大値
 - type は text もしくは subtitle
 
 ### 技術仕様
