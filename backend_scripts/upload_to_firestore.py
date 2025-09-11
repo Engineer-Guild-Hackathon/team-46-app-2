@@ -61,8 +61,9 @@ def main():
                 item['bookId'] = book_id
                 item['sentenceNo'] = i
 
-                # 新しいドキュメント参照を作成
-                doc_ref = collection_ref.document()
+                # ドキュメントIDを bookId と sentenceNo で作成
+                doc_id = f"{book_id}{i}"
+                doc_ref = collection_ref.document(doc_id)
                 batch.set(doc_ref, item)
 
             # バッチをコミット
