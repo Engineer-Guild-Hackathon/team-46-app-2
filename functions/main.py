@@ -111,7 +111,6 @@ def text(req: https_fn.Request) -> https_fn.Response:
             .where("sentenceNo", ">=", start_sentence_no) \
             .where("sentenceNo", "<=", start_sentence_no+20) \
             .order_by("sentenceNo", direction=firestore.Query.ASCENDING) \
-            .offset(start_sentence_no)
 
         docs = query.stream()
 
