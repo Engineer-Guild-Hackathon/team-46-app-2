@@ -41,10 +41,10 @@ firebase のbooksコレクション内でtitleにsearchパラメータを含む�
 |bookId| 必須 | bookId||
 |sentenceNo  | 必須 | 開始のsentenceNo||
 |userId|必須|ユーザーID||
-|wordClickCount|必須|クリックして単語を表示させた回数||
-|sentenceClickCount|必須|クリックして日本語訳を表示させた回数||
-|time|必須|前回のロードから今回のリクエストまでの秒数||
-|rate||ユーザーの推定レート|0|
+|wordClickCount||クリックして単語を表示させた回数|null|
+|sentenceClickCount||クリックして日本語訳を表示させた回数|null|
+|time||前回のロードから今回のリクエストまでの秒数|null|
+|rate||ユーザーの推定レート|null|
 
 ### レスポンス形式
 ```
