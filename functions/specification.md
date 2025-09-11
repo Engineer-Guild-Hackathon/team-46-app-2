@@ -39,7 +39,8 @@ firebase のbooksコレクション内でtitleにsearchパラメータを含む�
 | 名前 | 必須 | 説明 |デフォルト値|
 |------|------|------|------------|
 |bookId| 必須 | bookId||
-|page  | 必須 | ページ番号||
+|sentenceNo  | 必須 | 開始のsentenceNo||
+|userId|必須|ユーザーID||
 |wordClickCount|必須|クリックして単語を表示させた回数||
 |sentenceClickCount|必須|クリックして日本語訳を表示させた回数||
 |time|必須|前回のロードから今回のリクエストまでの秒数||
@@ -49,6 +50,7 @@ firebase のbooksコレクション内でtitleにsearchパラメータを含む�
 ```
 {
     "rate":1800,
+    "endSentenceNo":121,
     "text":[
         {
             "type":"text",
