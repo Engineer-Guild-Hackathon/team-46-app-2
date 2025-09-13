@@ -81,13 +81,13 @@ def text(req: https_fn.Request) -> https_fn.Response:
             if cnt == 0:
                 user_rate += 200
             elif cnt ==1:
-                user_rate += 100
-            elif cnt ==2:
-                user_rate += 50
-            elif cnt <=4:
                 user_rate += 0
-            else:
+            elif cnt ==2:
                 user_rate -= 100
+            elif cnt <=4:
+                user_rate -= 200
+            else:
+                user_rate -= 300
         
         level_to_rate = { # https://www.eiken.or.jp/cse/ を参考
             "A1":1500,
