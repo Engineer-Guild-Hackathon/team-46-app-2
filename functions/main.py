@@ -162,45 +162,20 @@ def text(req: https_fn.Request) -> https_fn.Response:
         return https_fn.Response("Internal Server Error", status=500)
 
 @https_fn.on_request(cors=options.CorsOptions(cors_origins="*", cors_methods=["GET", "POST", "OPTIONS"]))
-def openJapanese(req: https_fn.Request) -> https_fn.Response:
+def feedback(req: https_fn.Request) -> https_fn.Response:
     try:
         if req.method == 'POST':
             data = req.get_json()
             user_id = data.get("userId")
             rate = data.get("rate")
-            sentence_no = data.get("sentenceNo")
+            feedback_type=data.get("type","general")
+            value=data.get("value","")
         else: # GET
             user_id = req.args.get("userId")
             rate = req.args.get("rate")
-            sentence_no = req.args.get("sentenceNo")
+            feedback_type=data.get("type","general")
+            value=data.get("value","")
 
-        if not all([user_id, rate, sentence_no]):
-            return https_fn.Response("Missing required parameters", status=400)
-
-        db.collection('access_logs').add({
-            'userId': user_id,
-            'rate': rate,
-            'sentenceNo': sentence_no,
-            'timestamp': firestore.SERVER_TIMESTAMP,
-            'type':'openJapanese',
-        })
-
-        return https_fn.Response(json.dumps({"result": "success"}), status=200, mimetype="application/json")
-
-    except Exception as e:
-        print(f"Error logging open japanese event: {e}")
-        return https_fn.Response("Internal Server Error", status=500)
-
-@https_fn.on_request(cors=options.CorsOptions(cors_origins="*", cors_methods=["GET", "POST", "OPTIONS"]))
-def difficultBtn(req: https_fn.Request) -> https_fn.Response:
-    try:
-        if req.method == 'POST':
-            data = req.get_json()
-            user_id = data.get("userId")
-            rate = data.get("rate")
-        else: # GET
-            user_id = req.args.get("userId")
-            rate = req.args.get("rate")
 
         if not all([user_id, rate]):
             return https_fn.Response("Missing required parameters", status=400)
@@ -209,7 +184,8 @@ def difficultBtn(req: https_fn.Request) -> https_fn.Response:
             'userId': user_id,
             'rate': rate,
             'timestamp': firestore.SERVER_TIMESTAMP,
-            'type':'difficultBtn',
+            'type':feedback_type,
+            'value':value,
         })
 
         return https_fn.Response(json.dumps({"result": "success"}), status=200, mimetype="application/json")
