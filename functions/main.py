@@ -173,8 +173,8 @@ def feedback(req: https_fn.Request) -> https_fn.Response:
         else: # GET
             user_id = req.args.get("userId")
             rate = req.args.get("rate")
-            feedback_type=data.get("type","general")
-            value=data.get("value","")
+            feedback_type=req.args.get("type","general")
+            value=req.args.get("value","")
 
 
         if not all([user_id, rate]):
