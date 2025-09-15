@@ -14,10 +14,13 @@ with open('dictionary/NGSL.csv', 'r', encoding='utf-8') as f:
     lines=list(reader)
 
 for line in lines:
-    s=line[4].split('/')[0]
+    s=line[4]
     s=re.sub(r"《.*?》","",s)
     s=re.sub(r"〈.*?〉","",s)
-    if line[3] in d:
+    s=re.sub(r"【.*?】","",s)
+    s=re.sub(r"\(.*?\)","",s)
+    s=s.split('/')[0].split(',')[0].split('；')[0].strip()
+    if line[3] not in d:
         d[line[3]]=s
 
 print(d)
