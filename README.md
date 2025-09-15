@@ -14,5 +14,3 @@
 - デモURL: [https://flexread.vercel.app/](https://flexread.vercel.app/)
 - プレゼンURL：[https://docs.google.com/presentation/d/1Jum5oiyDba0ykXsura5-H4FYsWQdy0OEooG18veMOg0/edit](https://docs.google.com/presentation/d/1Jum5oiyDba0ykXsura5-H4FYsWQdy0OEooG18veMOg0/edit)
 
-
-
