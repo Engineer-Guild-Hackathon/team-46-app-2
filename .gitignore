@@ -5,4 +5,5 @@ functions/venv/
 functions/__pycache__/
 
 data_analysis/access_logs.pkl
-backend_scripts/OANC_wordlist_short.csv
+backend_scripts/dictionary/OANC_wordlist_short.csv
+backend_scripts/dictionary/NGSL.csv

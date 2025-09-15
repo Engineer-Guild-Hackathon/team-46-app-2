@@ -82,10 +82,10 @@ def main():
                 item['bookId'] = book_id
                 item['sentenceNo'] = i
 
-                item['jp_word_A1'] =  ",".join([oanc_dict.get(w.lower(),"") for w in MultiSplit(item['A1'], set(' ,."!?;:()[]{}'))])
-                item['jp_word_A2'] =  ",".join([oanc_dict.get(w.lower(),"") for w in MultiSplit(item['A2'], set(' ,."!?;:()[]{}'))])
-                item['jp_word_B1'] =  ",".join([oanc_dict.get(w.lower(),"") for w in MultiSplit(item['B1'], set(' ,."!?;:()[]{}'))])
-                item['jp_word_B2'] =  ",".join([oanc_dict.get(w.lower(),"") for w in MultiSplit(item['B2'], set(' ,."!?;:()[]{}'))])
+                item['jp_word_A1'] =  [oanc_dict.get(w.lower(),"") for w in MultiSplit(item['A1'], set(' ,."!?;:()[]{}'))]
+                item['jp_word_A2'] =  [oanc_dict.get(w.lower(),"") for w in MultiSplit(item['A2'], set(' ,."!?;:()[]{}'))]
+                item['jp_word_B1'] =  [oanc_dict.get(w.lower(),"") for w in MultiSplit(item['B1'], set(' ,."!?;:()[]{}'))]
+                item['jp_word_B2'] =  [oanc_dict.get(w.lower(),"") for w in MultiSplit(item['B2'], set(' ,."!?;:()[]{}'))]
 
                 # ドキュメントIDを bookId と sentenceNo で作成
                 doc_id = f"{book_id}{i}"
