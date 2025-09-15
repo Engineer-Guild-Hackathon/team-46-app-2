@@ -123,14 +123,17 @@ def text(req: https_fn.Request) -> https_fn.Response:
 
             en_text=data.get(level)
             jp_text=data.get("jp")
+            jp_word=data.get(f"jp_word_{level}")
             sentence_no=data.get("sentenceNo")
 
             if en_text==None:
                 return https_fn.Response("Internal Server Error: no level {level} sentence on DB", status=500)
             if jp_text==None:
                 return https_fn.Response("Internal Server Error: no jp sentence on DB", status=500)
-            totalCharaCount+=len(en_text)
+            if jp_word==None:
+                return https_fn.Response("Internal Server Error: no jp_word_{level} sentence on DB", status=500)
 
+            totalCharaCount+=len(en_text)
             if totalCharaCount>requested_char_count:
                 break
 
@@ -139,6 +142,7 @@ def text(req: https_fn.Request) -> https_fn.Response:
                 "sentenceNo":sentence_no,
                 "en":en_text,
                 "jp":jp_text,
+                "jp_word":jp_word,
             })
             
         output["endSentenceNo"]=sentence_no

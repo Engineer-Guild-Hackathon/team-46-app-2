@@ -5,7 +5,7 @@
 検索ワードをタイトルに含む書籍一覧を取得
 ### エンドポイント
 ```
-/api/books
+/books
 ```
 ### パラメータ
 | 名前 | 必須 | 説明 |デフォルト値|
@@ -33,7 +33,7 @@ firebase のbooksコレクション内でtitleにsearchパラメータを含む�
 あるページの本文を取得
 ### エンドポイント
 ```
-/api/text
+/text
 ```
 ### パラメータ
 | 名前 | 必須 | 説明 |デフォルト値|
@@ -67,14 +67,14 @@ firebase のbooksコレクション内でtitleにsearchパラメータを含む�
 - startSentenceNoから1ページ分の文のリストを返送
 - リスト長さはの合計文字数が要求文字数に達しない最大値
 - type は text もしくは subtitle
-- jp_wordは英文をスペース・カンマ・ピリオド・クオーテーションでsplitしたものに対して1:1で対応
+- jp_wordは英文を ```,."'!?;:()[]{}```でsplitしたものに対して1:1で対応
 ### 技術仕様
 firebase のtextsコレクション内で bookId,page,levelが一致するドキュメントのtextを返す。なければ空のjsonを返す
 
 
 ## Feedback
 ```
-/api/feedback
+/feedback
 ```
 
 ### パラメータ

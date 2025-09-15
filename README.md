@@ -1,6 +1,4 @@
-# ここにチーム番号とチーム名を入れてください
-
-このリポジトリはハッカソン提出用の雛形です。以下の項目をすべて埋めてください。
+# Team46 : これわた
 
 ---
 
@@ -13,7 +11,7 @@
 ---
 
 ## デモ　/ プレゼン資料
-- デモURL: 
+- デモURL: [https://flexread.vercel.app/](https://flexread.vercel.app/)
 - プレゼンURL：[https://docs.google.com/presentation/d/1Jum5oiyDba0ykXsura5-H4FYsWQdy0OEooG18veMOg0/edit](https://docs.google.com/presentation/d/1Jum5oiyDba0ykXsura5-H4FYsWQdy0OEooG18veMOg0/edit)
 
 
