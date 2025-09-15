@@ -84,6 +84,7 @@ def main():
                 item['bookId'] = book_id
                 item['sentenceNo'] = i
 
+                item['jp_word_ORIGINAL']= [oanc_dict.get(w.lower(),"") for w in MultiSplit(item['ORIGINAL'], set(' ,."!?;:()[]{}'))]
                 item['jp_word_A1'] =  [oanc_dict.get(w.lower(),"") for w in MultiSplit(item['A1'], set(' ,."!?;:()[]{}'))]
                 item['jp_word_A2'] =  [oanc_dict.get(w.lower(),"") for w in MultiSplit(item['A2'], set(' ,."!?;:()[]{}'))]
                 item['jp_word_B1'] =  [oanc_dict.get(w.lower(),"") for w in MultiSplit(item['B1'], set(' ,."!?;:()[]{}'))]
