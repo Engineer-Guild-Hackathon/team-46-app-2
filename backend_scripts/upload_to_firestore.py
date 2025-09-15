@@ -41,8 +41,10 @@ def MultiSplit(s,seps):
     start=0
     for i in range(len(s)):
         if s[i] in seps:
-            result.append(s[start:i])
+            if start!=i:#2連続でsepが来た場合、空文字は入れずに飛ばす
+                result.append(s[start:i])
             start=i+1
+            
     
     result.append(s[start:])
     return result
