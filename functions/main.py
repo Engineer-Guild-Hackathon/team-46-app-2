@@ -134,7 +134,7 @@ def text(req: https_fn.Request) -> https_fn.Response:
                 return https_fn.Response("Internal Server Error: no jp_word_{level} sentence on DB", status=500)
 
             totalCharaCount+=len(en_text)
-            if totalCharaCount>requested_char_count:
+            if totalCharaCount>requested_char_count and len(output["text"])>=1:
                 break
 
             output["text"].append({
