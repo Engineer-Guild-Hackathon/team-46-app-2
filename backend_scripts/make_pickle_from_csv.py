@@ -24,5 +24,16 @@ for line in lines:
         d[line[3]]=s
 
 print(d)
-with open('OANC.pkl', 'wb') as f:
+with open('en2jp.pkl', 'wb') as f:
+    pickle.dump(d,f)
+
+with open('dictionary/OANC_wordlist_short.csv', 'r', encoding='utf-8') as f:
+    reader = csv.reader(f)
+    lines=list(reader)
+
+d={}
+for line in lines:
+    d[line[0]]=line[1]
+
+with open('en2CEFR.pkl', 'wb') as f:
     pickle.dump(d,f)

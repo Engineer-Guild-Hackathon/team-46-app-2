@@ -61,7 +61,7 @@ def main():
     # データディレクトリのパス
     data_dir = os.path.join(os.path.dirname(__file__), 'data')
 
-    with open('OANC.pkl', 'rb') as f:
+    with open('en2jp.pkl', 'rb') as f:
         oanc_dict = pickle.load(f)
 
     # データディレクトリ内のすべてのファイルをループ
