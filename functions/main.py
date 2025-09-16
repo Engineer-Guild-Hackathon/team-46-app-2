@@ -78,13 +78,13 @@ def text(req: https_fn.Request) -> https_fn.Response:
                 cnt=int(word_click_count)
             else:
                 cnt=int(word_click_count)+int(sentence_click_count)
-            if cnt == 0:
+            if cnt <= 1:
+                user_rate += 400
+            elif cnt<=requested_char_count/5.5*0.02:#98%
                 user_rate += 200
-            elif cnt ==1:
+            elif cnt <=requested_char_count/5.5*0.04:#96%：これくらいが「ちょうどよくちょい難しい」ライン
                 user_rate += 0
-            elif cnt ==2:
-                user_rate -= 100
-            elif cnt <=4:
+            elif cnt <=requested_char_count/5.5*0.1:
                 user_rate -= 200
             else:
                 user_rate -= 300
@@ -123,15 +123,18 @@ def text(req: https_fn.Request) -> https_fn.Response:
 
             en_text=data.get(level)
             jp_text=data.get("jp")
+            jp_word=data.get(f"jp_word_{level}")
             sentence_no=data.get("sentenceNo")
 
             if en_text==None:
                 return https_fn.Response("Internal Server Error: no level {level} sentence on DB", status=500)
             if jp_text==None:
                 return https_fn.Response("Internal Server Error: no jp sentence on DB", status=500)
-            totalCharaCount+=len(en_text)
+            if jp_word==None:
+                return https_fn.Response("Internal Server Error: no jp_word_{level} sentence on DB", status=500)
 
-            if totalCharaCount>requested_char_count:
+            totalCharaCount+=len(en_text)
+            if totalCharaCount>requested_char_count and len(output["text"])>=1:
                 break
 
             output["text"].append({
@@ -139,6 +142,7 @@ def text(req: https_fn.Request) -> https_fn.Response:
                 "sentenceNo":sentence_no,
                 "en":en_text,
                 "jp":jp_text,
+                "jp_word":jp_word,
             })
             
         output["endSentenceNo"]=sentence_no
@@ -162,45 +166,20 @@ def text(req: https_fn.Request) -> https_fn.Response:
         return https_fn.Response("Internal Server Error", status=500)
 
 @https_fn.on_request(cors=options.CorsOptions(cors_origins="*", cors_methods=["GET", "POST", "OPTIONS"]))
-def openJapanese(req: https_fn.Request) -> https_fn.Response:
+def feedback(req: https_fn.Request) -> https_fn.Response:
     try:
         if req.method == 'POST':
             data = req.get_json()
             user_id = data.get("userId")
             rate = data.get("rate")
-            sentence_no = data.get("sentenceNo")
+            feedback_type=data.get("type","general")
+            value=data.get("value","")
         else: # GET
             user_id = req.args.get("userId")
             rate = req.args.get("rate")
-            sentence_no = req.args.get("sentenceNo")
+            feedback_type=req.args.get("type","general")
+            value=req.args.get("value","")
 
-        if not all([user_id, rate, sentence_no]):
-            return https_fn.Response("Missing required parameters", status=400)
-
-        db.collection('access_logs').add({
-            'userId': user_id,
-            'rate': rate,
-            'sentenceNo': sentence_no,
-            'timestamp': firestore.SERVER_TIMESTAMP,
-            'type':'openJapanese',
-        })
-
-        return https_fn.Response(json.dumps({"result": "success"}), status=200, mimetype="application/json")
-
-    except Exception as e:
-        print(f"Error logging open japanese event: {e}")
-        return https_fn.Response("Internal Server Error", status=500)
-
-@https_fn.on_request(cors=options.CorsOptions(cors_origins="*", cors_methods=["GET", "POST", "OPTIONS"]))
-def difficultBtn(req: https_fn.Request) -> https_fn.Response:
-    try:
-        if req.method == 'POST':
-            data = req.get_json()
-            user_id = data.get("userId")
-            rate = data.get("rate")
-        else: # GET
-            user_id = req.args.get("userId")
-            rate = req.args.get("rate")
 
         if not all([user_id, rate]):
             return https_fn.Response("Missing required parameters", status=400)
@@ -209,7 +188,8 @@ def difficultBtn(req: https_fn.Request) -> https_fn.Response:
             'userId': user_id,
             'rate': rate,
             'timestamp': firestore.SERVER_TIMESTAMP,
-            'type':'difficultBtn',
+            'type':feedback_type,
+            'value':value,
         })
 
         return https_fn.Response(json.dumps({"result": "success"}), status=200, mimetype="application/json")
