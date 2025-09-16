@@ -80,11 +80,11 @@ def text(req: https_fn.Request) -> https_fn.Response:
                 cnt=int(word_click_count)+int(sentence_click_count)
             if cnt <= 1:
                 user_rate += 400
-            elif cnt<=7:#98%
+            elif cnt<=requested_char_count/5.5*0.02:#98%
                 user_rate += 200
-            elif cnt <=14:#96%：これくらいが「ちょうどよくちょい難しい」ライン
+            elif cnt <=requested_char_count/5.5*0.04:#96%：これくらいが「ちょうどよくちょい難しい」ライン
                 user_rate += 0
-            elif cnt <=30:
+            elif cnt <=requested_char_count/5.5*0.1:
                 user_rate -= 200
             else:
                 user_rate -= 300
