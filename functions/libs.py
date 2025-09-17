@@ -21,6 +21,19 @@ def getWeight(rate, level_to_rate):
     choices, w = zip(*weights.items())
     return choices,w
 
+def MultiSplit(s,seps):
+    result=[]
+    
+    start=0
+    for i in range(len(s)):
+        if s[i] in seps:
+            if start!=i:#2連続でsepが来た場合、空文字は入れずに飛ばす
+                result.append(s[start:i])
+            start=i+1
+            
+    
+    result.append(s[start:])
+    return result
 
 if __name__=="__main__":
     level_to_rate = { # https://www.eiken.or.jp/cse/ を参考
