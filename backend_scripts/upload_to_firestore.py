@@ -66,38 +66,42 @@ def main():
 
     # データディレクトリ内のすべてのファイルをループ
     for filename in os.listdir(data_dir):
-        if filename.endswith('.json'):
-            book_id = os.path.splitext(filename)[0]
-            file_path = os.path.join(data_dir, filename)
+        if not filename.endswith('.json'):
+            continue
+        book_id = os.path.splitext(filename)[0]
+        file_path = os.path.join(data_dir, filename)
 
-            print(f"Processing {file_path}...")
+        print(f"Processing {file_path}...")
 
-            with open(file_path, 'r', encoding='utf-8') as f:
-                data = json.load(f)
+        with open(file_path, 'r', encoding='utf-8') as f:
+            data = json.load(f)
 
-            # バッチ書き込みの準備
-            batch = db.batch()
-            collection_ref = db.collection('text')
+        # バッチ書き込みの準備
+        batch = db.batch()
+        collection_ref = db.collection('text')
 
-            # 各文に対して処理
-            for i, item in enumerate(data):
-                item['bookId'] = book_id
-                item['sentenceNo'] = i
+        # 各文に対して処理
+        for i, item in enumerate(data):
+            item['bookId'] = book_id
+            item['sentenceNo'] = i
 
-                item['jp_word_ORIGINAL']= [oanc_dict.get(w.lower(),"") for w in MultiSplit(item['ORIGINAL'], set(' ,."!?;:()[]{}'))]
-                item['jp_word_A1'] =  [oanc_dict.get(w.lower(),"") for w in MultiSplit(item['A1'], set(' ,."!?;:()[]{}'))]
-                item['jp_word_A2'] =  [oanc_dict.get(w.lower(),"") for w in MultiSplit(item['A2'], set(' ,."!?;:()[]{}'))]
-                item['jp_word_B1'] =  [oanc_dict.get(w.lower(),"") for w in MultiSplit(item['B1'], set(' ,."!?;:()[]{}'))]
-                item['jp_word_B2'] =  [oanc_dict.get(w.lower(),"") for w in MultiSplit(item['B2'], set(' ,."!?;:()[]{}'))]
+            # item['jp_word_ORIGINAL']= [oanc_dict.get(w.lower(),"") for w in MultiSplit(item['ORIGINAL'], set(' ,."!?;:()[]{}'))]
+            # item['jp_word_A1'] =  [oanc_dict.get(w.lower(),"") for w in MultiSplit(item['A1'], set(' ,."!?;:()[]{}'))]
+            # item['jp_word_A2'] =  [oanc_dict.get(w.lower(),"") for w in MultiSplit(item['A2'], set(' ,."!?;:()[]{}'))]
+            # item['jp_word_B1'] =  [oanc_dict.get(w.lower(),"") for w in MultiSplit(item['B1'], set(' ,."!?;:()[]{}'))]
+            # item['jp_word_B2'] =  [oanc_dict.get(w.lower(),"") for w in MultiSplit(item['B2'], set(' ,."!?;:()[]{}'))]
 
-                # ドキュメントIDを bookId と sentenceNo で作成
-                doc_id = f"{book_id}{i}"
-                doc_ref = collection_ref.document(doc_id)
-                batch.set(doc_ref, item)
+            if 'ORIGINAL_SEGMENT' in item:
+                item['ORIGINAL']= item['ORIGINAL_SEGMENT']
+                del item['ORIGINAL_SEGMENT']
+            # ドキュメントIDを bookId と sentenceNo で作成
+            doc_id = f"{book_id}{i}"
+            doc_ref = collection_ref.document(doc_id)
+            batch.set(doc_ref, item)
 
-            # バッチをコミット
-            batch.commit()
-            print(f"Successfully uploaded {len(data)} sentences for bookId: {book_id}")
+        # バッチをコミット
+        batch.commit()
+        print(f"Successfully uploaded {len(data)} sentences for bookId: {book_id}")
 
 if __name__ == "__main__":
     main()
