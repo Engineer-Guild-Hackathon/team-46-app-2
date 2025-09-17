@@ -10,3 +10,4 @@ backend_scripts/dictionary/NGSL.csv
 backend_scripts/data/*
 
 data_analysis/
+firebase-debug.log
