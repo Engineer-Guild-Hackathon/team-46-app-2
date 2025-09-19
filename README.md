@@ -6,7 +6,7 @@
 - チーム番号: 46
 - チーム名: これわた
 - プロダクト名: FlexRead
-- メンバー: maltonn, Tanipoon, 10mokiokd, Taiga-Sekida
+- メンバー: maltonn, Tanipoon, Raifa21, Taiga-Sekida
 
 ---
 
